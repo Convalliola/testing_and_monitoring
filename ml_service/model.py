@@ -25,10 +25,23 @@ class Model:
             return self.data
 
     def set(self, run_id: str) -> None:
+        # Сначала загружаем модель,  подменяем только при успехе
         model = load_model(run_id=run_id)
         with self.lock:
             self.data = ModelData(model=model, run_id=run_id)
 
     @property
     def features(self) -> list[str]:
-        return self.data.model.feature_names_in_
+        with self.lock:
+            model = self.data.model
+            if model is None:
+                return []
+            return [str(name) for name in model.feature_names_in_]
+
+    @property
+    def model_type(self) -> str | None:
+        with self.lock:
+            model = self.data.model
+            if model is None:
+                return None
+            return model.__class__.__name__

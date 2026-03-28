@@ -19,3 +19,8 @@ def default_run_id() -> str:
     if not default_run_id:
         raise RuntimeError('Set DEFAULT_RUN_ID to load model on startup')
     return default_run_id
+
+
+def evidently_project_id() -> str | None:
+    """Возвращает UUID проекта Evidently (None если переменная не задана) """
+    return os.getenv('EVIDENTLY_PROJECT_ID')

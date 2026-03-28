@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class PredictRequest(BaseModel):
@@ -53,8 +53,7 @@ class PredictRequest(BaseModel):
         description='Страна происхождения',
     )
 
-    class Config:
-        allow_population_by_field_name = True
+    model_config = ConfigDict(validate_by_name=True)
 
 
 class PredictResponse(BaseModel):
@@ -63,7 +62,7 @@ class PredictResponse(BaseModel):
 
 
 class UpdateModelRequest(BaseModel):
-    run_id: str = Field(description='MLflow run_id')
+    run_id: str = Field(min_length=1, description='MLflow run_id')
 
 
 class UpdateModelResponse(BaseModel):
