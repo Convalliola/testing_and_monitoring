@@ -14,9 +14,9 @@ from evidently.presets import DataDriftPreset
 from evidently.ui.workspace import RemoteWorkspace
 
 EVIDENTLY_URL = 'http://158.160.2.37:8000/'
-REFERENCE_SIZE = 100   # минимум записей для формирования baseline
-CURRENT_MAX = 1000     # максимальный размер текущего окна (старые записи удаляются)
-REPORT_INTERVAL = 60   # интервал между запусками отчёта, секунды
+REFERENCE_SIZE = 100 #  минимум записей для формирования baseline
+CURRENT_MAX = 1000 # максимальный размер текущего окна (старые записи удаляются)
+REPORT_INTERVAL = 60  #  интервал между запусками отчёта, секунды
 
 logger = logging.getLogger(__name__)
 

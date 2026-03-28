@@ -15,4 +15,5 @@ services:
     environment:
       - MLFLOW_TRACKING_URI=http://158.160.2.37:5000/
       - DEFAULT_RUN_ID=${DEFAULT_RUN_ID}
+      - EVIDENTLY_PROJECT_ID=019d2f99-1f68-717d-b61c-7007e343f1c2
     command: uvicorn main:app --host 0.0.0.0 --port 8890
